@@ -172,6 +172,8 @@ python planpers.py \
 
 If you find this work helpful or use the code or dataset, please cite the following paper:
 
+[LaMP-QA: A Benchmark for Personalized Long-form Question Answering](https://arxiv.org/abs/2506.00137)
+
 ```
 @misc{salemi2025lampqabenchmarkpersonalizedlongform,
       title={LaMP-QA: A Benchmark for Personalized Long-form Question Answering}, 

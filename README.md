@@ -173,7 +173,15 @@ python planpers.py \
 If you find this work helpful or use the code or dataset, please cite the following paper:
 
 ```
-coming soon
+@misc{salemi2025lampqabenchmarkpersonalizedlongform,
+      title={LaMP-QA: A Benchmark for Personalized Long-form Question Answering}, 
+      author={Alireza Salemi and Hamed Zamani},
+      year={2025},
+      eprint={2506.00137},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2506.00137}, 
+}
 ```
 
 # Acknowledgment

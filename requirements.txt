@@ -3,7 +3,7 @@ datasets==3.2.0
 huggingface_hub==0.27.1
 json5==0.10.0
 matplotlib==3.10.3
-numpy==2.2.6
+numpy<=2.0.0
 openai==1.82.0
 pandas==2.2.3
 peft==0.15.1

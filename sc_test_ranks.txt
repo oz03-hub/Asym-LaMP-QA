@@ -1,0 +1,15 @@
+5 rank results
+Macro Precision at 5: 0.7708
+Macro P@R: 0.6866
+Macro Recall at 5: 0.1797
+
+10 rank results
+Macro Precision at 10: 0.7351
+Macro P@R: 0.6866
+Macro Recall at 10: 0.3100
+
+20 rank results
+Macro Precision at 20: 0.6774
+Macro P@R: 0.6866
+Macro Recall at 20: 0.4826
+

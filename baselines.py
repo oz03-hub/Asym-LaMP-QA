@@ -102,6 +102,7 @@ if __name__ == "__main__":
     else:
         formater = get_baseline_no_rag_formatter(tokenizer, proprietary_llm=is_proprietary_llm)
     prompts = prepare_prompts(dataset, formater)
+
     outputs_dict = {}
     temperature = args.temperature
     retries = 0

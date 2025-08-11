@@ -7,4 +7,4 @@ def load_dataset(addr, cache_dir):
             dataset = json.load(f)
             for data in dataset:
                 yield data
-    return datasets.Dataset.from_generator(gen, cache_dir=cache_dir)
+    return datasets.Dataset.from_generator(gen, cache_dir=None)

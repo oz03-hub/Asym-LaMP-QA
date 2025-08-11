@@ -1,0 +1,267 @@
+Keeping [] in profile
+Temp data file saved at data/processed/TEMP_2025-07-10 15:45:01.383581_ae_processed_test.json.
+	Running baseline: ['python', 'baselines.py', '--model_addr', 'Qwen/Qwen2.5-7B-Instruct', '--inputs_addr', 'data/processed/TEMP_2025-07-10 15:45:01.383581_ae_processed_test.json', '--output_addr', 'data/out/nopers/ae_test_75_output.json', '--temperature', '0.1', '--top_p', '0.95', '--max_tokens', '8192', '--num_generated_outputs', '1', '--num_contexts', '10', '--max_retries', '10', '--cache_dir', '/work/pi_hzamani_umass_edu/ozel_cache/']
+
+Generating train split: 0 examples [00:00, ? examples/s]
+Generating train split: 102 examples [00:00, 3123.54 examples/s]
+INFO 07-10 15:45:46 config.py:510] This model supports multiple tasks: {'generate', 'reward', 'score', 'embed', 'classify'}. Defaulting to 'generate'.
+INFO 07-10 15:45:46 llm_engine.py:234] Initializing an LLM engine (v0.6.6.post1) with config: model='Qwen/Qwen2.5-7B-Instruct', speculative_config=None, tokenizer='Qwen/Qwen2.5-7B-Instruct', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, override_neuron_config=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=32768, download_dir='/work/pi_hzamani_umass_edu/ozel_cache/', load_format=LoadFormat.AUTO, tensor_parallel_size=1, pipeline_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto, quantization_param_path=None, device_config=cuda, decoding_config=DecodingConfig(guided_decoding_backend='xgrammar'), observability_config=ObservabilityConfig(otlp_traces_endpoint=None, collect_model_forward_time=False, collect_model_execute_time=False), seed=0, served_model_name=Qwen/Qwen2.5-7B-Instruct, num_scheduler_steps=1, multi_step_stream_outputs=True, enable_prefix_caching=False, chunked_prefill_enabled=False, use_async_output_proc=True, disable_mm_preprocessor_cache=False, mm_processor_kwargs=None, pooler_config=None, compilation_config={"splitting_ops":["vllm.unified_attention","vllm.unified_attention_with_output"],"candidate_compile_sizes":[],"compile_sizes":[],"capture_sizes":[256,248,240,232,224,216,208,200,192,184,176,168,160,152,144,136,128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"max_capture_size":256}, use_cached_outputs=False, 
+INFO 07-10 15:45:47 selector.py:120] Using Flash Attention backend.
+INFO 07-10 15:45:49 model_runner.py:1094] Starting to load model Qwen/Qwen2.5-7B-Instruct...
+INFO 07-10 15:45:50 weight_utils.py:251] Using model weights format ['*.safetensors']
+
+Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+
+Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:06<00:20,  6.98s/it]
+
+Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:14<00:14,  7.16s/it]
+
+Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:21<00:07,  7.02s/it]
+
+Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:27<00:00,  6.76s/it]
+
+Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:27<00:00,  6.87s/it]
+
+INFO 07-10 15:46:17 model_runner.py:1099] Loading model weights took 14.2487 GB
+INFO 07-10 15:46:19 worker.py:241] Memory profiling takes 1.36 seconds
+INFO 07-10 15:46:19 worker.py:241] the current vLLM instance can use total_gpu_memory (79.19GiB) x gpu_memory_utilization (0.90) = 71.27GiB
+INFO 07-10 15:46:19 worker.py:241] model weights take 14.25GiB; non_torch_memory takes 0.21GiB; PyTorch activation peak memory takes 4.38GiB; the rest of the memory reserved for KV Cache is 52.44GiB.
+INFO 07-10 15:46:19 gpu_executor.py:76] # GPU blocks: 61364, # CPU blocks: 4681
+INFO 07-10 15:46:19 gpu_executor.py:80] Maximum concurrency for 32768 tokens per request: 29.96x
+INFO 07-10 15:46:21 model_runner.py:1415] Capturing cudagraphs for decoding. This may lead to unexpected consequences if the model is not static. To run the model in eager mode, set 'enforce_eager=True' or use '--enforce-eager' in the CLI. If out-of-memory error occurs during cudagraph capture, consider decreasing `gpu_memory_utilization` or switching to eager mode. You can also reduce the `max_num_seqs` as needed to decrease memory usage.
+
+Capturing CUDA graph shapes:   0%|          | 0/35 [00:00<?, ?it/s]
+Capturing CUDA graph shapes:   3%|▎         | 1/35 [00:00<00:13,  2.51it/s]
+Capturing CUDA graph shapes:   6%|▌         | 2/35 [00:00<00:10,  3.24it/s]
+Capturing CUDA graph shapes:   9%|▊         | 3/35 [00:00<00:09,  3.47it/s]
+Capturing CUDA graph shapes:  11%|█▏        | 4/35 [00:01<00:08,  3.67it/s]
+Capturing CUDA graph shapes:  14%|█▍        | 5/35 [00:01<00:08,  3.75it/s]
+Capturing CUDA graph shapes:  17%|█▋        | 6/35 [00:01<00:07,  3.81it/s]
+Capturing CUDA graph shapes:  20%|██        | 7/35 [00:02<00:08,  3.45it/s]
+Capturing CUDA graph shapes:  23%|██▎       | 8/35 [00:02<00:07,  3.60it/s]
+Capturing CUDA graph shapes:  26%|██▌       | 9/35 [00:02<00:07,  3.68it/s]
+Capturing CUDA graph shapes:  29%|██▊       | 10/35 [00:02<00:06,  3.75it/s]
+Capturing CUDA graph shapes:  31%|███▏      | 11/35 [00:03<00:06,  3.84it/s]
+Capturing CUDA graph shapes:  34%|███▍      | 12/35 [00:03<00:06,  3.83it/s]
+Capturing CUDA graph shapes:  37%|███▋      | 13/35 [00:03<00:05,  3.90it/s]
+Capturing CUDA graph shapes:  40%|████      | 14/35 [00:03<00:05,  3.86it/s]
+Capturing CUDA graph shapes:  43%|████▎     | 15/35 [00:04<00:05,  3.90it/s]
+Capturing CUDA graph shapes:  46%|████▌     | 16/35 [00:04<00:04,  3.90it/s]
+Capturing CUDA graph shapes:  49%|████▊     | 17/35 [00:04<00:04,  3.92it/s]
+Capturing CUDA graph shapes:  51%|█████▏    | 18/35 [00:04<00:04,  3.85it/s]
+Capturing CUDA graph shapes:  54%|█████▍    | 19/35 [00:05<00:04,  3.86it/s]
+Capturing CUDA graph shapes:  57%|█████▋    | 20/35 [00:05<00:03,  3.91it/s]
+Capturing CUDA graph shapes:  60%|██████    | 21/35 [00:05<00:03,  3.88it/s]
+Capturing CUDA graph shapes:  63%|██████▎   | 22/35 [00:05<00:03,  3.93it/s]
+Capturing CUDA graph shapes:  66%|██████▌   | 23/35 [00:06<00:03,  3.91it/s]
+Capturing CUDA graph shapes:  69%|██████▊   | 24/35 [00:06<00:02,  3.94it/s]
+Capturing CUDA graph shapes:  71%|███████▏  | 25/35 [00:06<00:02,  3.87it/s]
+Capturing CUDA graph shapes:  74%|███████▍  | 26/35 [00:06<00:02,  3.88it/s]
+Capturing CUDA graph shapes:  77%|███████▋  | 27/35 [00:07<00:02,  3.92it/s]
+Capturing CUDA graph shapes:  80%|████████  | 28/35 [00:07<00:01,  3.91it/s]
+Capturing CUDA graph shapes:  83%|████████▎ | 29/35 [00:07<00:01,  3.78it/s]
+Capturing CUDA graph shapes:  86%|████████▌ | 30/35 [00:07<00:01,  3.77it/s]
+Capturing CUDA graph shapes:  89%|████████▊ | 31/35 [00:08<00:01,  3.80it/s]
+Capturing CUDA graph shapes:  91%|█████████▏| 32/35 [00:08<00:00,  3.72it/s]
+Capturing CUDA graph shapes:  94%|█████████▍| 33/35 [00:08<00:00,  3.77it/s]
+Capturing CUDA graph shapes:  97%|█████████▋| 34/35 [00:08<00:00,  3.86it/s]
+Capturing CUDA graph shapes: 100%|██████████| 35/35 [00:09<00:00,  3.68it/s]
+Capturing CUDA graph shapes: 100%|██████████| 35/35 [00:09<00:00,  3.77it/s]
+INFO 07-10 15:46:31 model_runner.py:1535] Graph capturing finished in 9 secs, took 0.30 GiB
+INFO 07-10 15:46:31 llm_engine.py:431] init engine (profile, create kv cache, warmup model) took 13.35 seconds
+None
+
+Processed prompts:   0%|          | 0/102 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:   1%|          | 1/102 [00:00<01:01,  1.63it/s, est. speed input: 115.79 toks/s, output: 37.51 toks/s]
+Processed prompts:   3%|▎         | 3/102 [00:00<00:24,  4.04it/s, est. speed input: 260.47 toks/s, output: 107.94 toks/s]
+Processed prompts:   9%|▉         | 9/102 [00:00<00:06, 13.63it/s, est. speed input: 675.64 toks/s, output: 376.73 toks/s]
+Processed prompts:  12%|█▏        | 12/102 [00:01<00:05, 16.14it/s, est. speed input: 793.63 toks/s, output: 483.35 toks/s]
+Processed prompts:  20%|█▉        | 20/102 [00:01<00:02, 28.48it/s, est. speed input: 1195.64 toks/s, output: 844.32 toks/s]
+Processed prompts:  30%|███       | 31/102 [00:01<00:01, 46.52it/s, est. speed input: 1717.26 toks/s, output: 1365.40 toks/s]
+Processed prompts:  46%|████▌     | 47/102 [00:01<00:00, 71.22it/s, est. speed input: 2447.98 toks/s, output: 2130.40 toks/s]
+Processed prompts:  55%|█████▍    | 56/102 [00:01<00:00, 70.56it/s, est. speed input: 2679.10 toks/s, output: 2481.25 toks/s]
+Processed prompts:  70%|██████▉   | 71/102 [00:01<00:00, 89.76it/s, est. speed input: 3207.56 toks/s, output: 3237.06 toks/s]
+Processed prompts:  87%|████████▋ | 89/102 [00:01<00:00, 108.56it/s, est. speed input: 3798.29 toks/s, output: 4154.62 toks/s]
+Processed prompts:  99%|█████████▉| 101/102 [00:02<00:00, 48.68it/s, est. speed input: 3261.25 toks/s, output: 3855.69 toks/s]
+Processed prompts: 100%|██████████| 102/102 [00:02<00:00, 37.30it/s, est. speed input: 2848.16 toks/s, output: 3424.43 toks/s]
+[rank0]:[W710 15:46:35.763398000 ProcessGroupNCCL.cpp:1250] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+Experiment complete! Output can be found at data/out/nopers/ae_test_75_output.json
+Cleaned temporary files.
+Keeping [] in profile
+Temp data file saved at data/processed/TEMP_2025-07-10 15:46:38.033978_lp_processed_test.json.
+	Running baseline: ['python', 'baselines.py', '--model_addr', 'Qwen/Qwen2.5-7B-Instruct', '--inputs_addr', 'data/processed/TEMP_2025-07-10 15:46:38.033978_lp_processed_test.json', '--output_addr', 'data/out/nopers/lp_test_75_output.json', '--temperature', '0.1', '--top_p', '0.95', '--max_tokens', '8192', '--num_generated_outputs', '1', '--num_contexts', '10', '--max_retries', '10', '--cache_dir', '/work/pi_hzamani_umass_edu/ozel_cache/']
+
+Generating train split: 0 examples [00:00, ? examples/s]
+Generating train split: 136 examples [00:00, 10703.17 examples/s]
+INFO 07-10 15:46:52 config.py:510] This model supports multiple tasks: {'generate', 'classify', 'reward', 'score', 'embed'}. Defaulting to 'generate'.
+INFO 07-10 15:46:52 llm_engine.py:234] Initializing an LLM engine (v0.6.6.post1) with config: model='Qwen/Qwen2.5-7B-Instruct', speculative_config=None, tokenizer='Qwen/Qwen2.5-7B-Instruct', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, override_neuron_config=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=32768, download_dir='/work/pi_hzamani_umass_edu/ozel_cache/', load_format=LoadFormat.AUTO, tensor_parallel_size=1, pipeline_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto, quantization_param_path=None, device_config=cuda, decoding_config=DecodingConfig(guided_decoding_backend='xgrammar'), observability_config=ObservabilityConfig(otlp_traces_endpoint=None, collect_model_forward_time=False, collect_model_execute_time=False), seed=0, served_model_name=Qwen/Qwen2.5-7B-Instruct, num_scheduler_steps=1, multi_step_stream_outputs=True, enable_prefix_caching=False, chunked_prefill_enabled=False, use_async_output_proc=True, disable_mm_preprocessor_cache=False, mm_processor_kwargs=None, pooler_config=None, compilation_config={"splitting_ops":["vllm.unified_attention","vllm.unified_attention_with_output"],"candidate_compile_sizes":[],"compile_sizes":[],"capture_sizes":[256,248,240,232,224,216,208,200,192,184,176,168,160,152,144,136,128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"max_capture_size":256}, use_cached_outputs=False, 
+INFO 07-10 15:46:53 selector.py:120] Using Flash Attention backend.
+INFO 07-10 15:46:54 model_runner.py:1094] Starting to load model Qwen/Qwen2.5-7B-Instruct...
+INFO 07-10 15:46:55 weight_utils.py:251] Using model weights format ['*.safetensors']
+
+Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+
+Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:00<00:01,  1.99it/s]
+
+Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:01<00:01,  1.95it/s]
+
+Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:01<00:00,  1.94it/s]
+
+Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:02<00:00,  1.91it/s]
+
+Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:02<00:00,  1.93it/s]
+
+INFO 07-10 15:46:57 model_runner.py:1099] Loading model weights took 14.2487 GB
+INFO 07-10 15:46:58 worker.py:241] Memory profiling takes 1.03 seconds
+INFO 07-10 15:46:58 worker.py:241] the current vLLM instance can use total_gpu_memory (79.19GiB) x gpu_memory_utilization (0.90) = 71.27GiB
+INFO 07-10 15:46:58 worker.py:241] model weights take 14.25GiB; non_torch_memory takes 0.21GiB; PyTorch activation peak memory takes 4.38GiB; the rest of the memory reserved for KV Cache is 52.44GiB.
+INFO 07-10 15:46:58 gpu_executor.py:76] # GPU blocks: 61364, # CPU blocks: 4681
+INFO 07-10 15:46:58 gpu_executor.py:80] Maximum concurrency for 32768 tokens per request: 29.96x
+INFO 07-10 15:47:01 model_runner.py:1415] Capturing cudagraphs for decoding. This may lead to unexpected consequences if the model is not static. To run the model in eager mode, set 'enforce_eager=True' or use '--enforce-eager' in the CLI. If out-of-memory error occurs during cudagraph capture, consider decreasing `gpu_memory_utilization` or switching to eager mode. You can also reduce the `max_num_seqs` as needed to decrease memory usage.
+
+Capturing CUDA graph shapes:   0%|          | 0/35 [00:00<?, ?it/s]
+Capturing CUDA graph shapes:   3%|▎         | 1/35 [00:00<00:11,  2.93it/s]
+Capturing CUDA graph shapes:   6%|▌         | 2/35 [00:00<00:10,  3.23it/s]
+Capturing CUDA graph shapes:   9%|▊         | 3/35 [00:00<00:09,  3.28it/s]
+Capturing CUDA graph shapes:  11%|█▏        | 4/35 [00:01<00:09,  3.36it/s]
+Capturing CUDA graph shapes:  14%|█▍        | 5/35 [00:01<00:08,  3.36it/s]
+Capturing CUDA graph shapes:  17%|█▋        | 6/35 [00:01<00:08,  3.33it/s]
+Capturing CUDA graph shapes:  20%|██        | 7/35 [00:02<00:08,  3.33it/s]
+Capturing CUDA graph shapes:  23%|██▎       | 8/35 [00:02<00:07,  3.38it/s]
+Capturing CUDA graph shapes:  26%|██▌       | 9/35 [00:02<00:07,  3.37it/s]
+Capturing CUDA graph shapes:  29%|██▊       | 10/35 [00:02<00:07,  3.40it/s]
+Capturing CUDA graph shapes:  31%|███▏      | 11/35 [00:03<00:07,  3.41it/s]
+Capturing CUDA graph shapes:  34%|███▍      | 12/35 [00:03<00:06,  3.42it/s]
+Capturing CUDA graph shapes:  37%|███▋      | 13/35 [00:03<00:06,  3.41it/s]
+Capturing CUDA graph shapes:  40%|████      | 14/35 [00:04<00:06,  3.43it/s]
+Capturing CUDA graph shapes:  43%|████▎     | 15/35 [00:04<00:05,  3.43it/s]
+Capturing CUDA graph shapes:  46%|████▌     | 16/35 [00:04<00:05,  3.44it/s]
+Capturing CUDA graph shapes:  49%|████▊     | 17/35 [00:05<00:05,  3.43it/s]
+Capturing CUDA graph shapes:  51%|█████▏    | 18/35 [00:05<00:04,  3.45it/s]
+Capturing CUDA graph shapes:  54%|█████▍    | 19/35 [00:05<00:04,  3.44it/s]
+Capturing CUDA graph shapes:  57%|█████▋    | 20/35 [00:05<00:04,  3.45it/s]
+Capturing CUDA graph shapes:  60%|██████    | 21/35 [00:06<00:04,  3.44it/s]
+Capturing CUDA graph shapes:  63%|██████▎   | 22/35 [00:06<00:03,  3.46it/s]
+Capturing CUDA graph shapes:  66%|██████▌   | 23/35 [00:06<00:03,  3.44it/s]
+Capturing CUDA graph shapes:  69%|██████▊   | 24/35 [00:07<00:03,  3.47it/s]
+Capturing CUDA graph shapes:  71%|███████▏  | 25/35 [00:07<00:02,  3.46it/s]
+Capturing CUDA graph shapes:  74%|███████▍  | 26/35 [00:07<00:02,  3.40it/s]
+Capturing CUDA graph shapes:  77%|███████▋  | 27/35 [00:07<00:02,  3.41it/s]
+Capturing CUDA graph shapes:  80%|████████  | 28/35 [00:08<00:02,  3.44it/s]
+Capturing CUDA graph shapes:  83%|████████▎ | 29/35 [00:08<00:01,  3.35it/s]
+Capturing CUDA graph shapes:  86%|████████▌ | 30/35 [00:08<00:01,  3.38it/s]
+Capturing CUDA graph shapes:  89%|████████▊ | 31/35 [00:09<00:01,  3.36it/s]
+Capturing CUDA graph shapes:  91%|█████████▏| 32/35 [00:09<00:00,  3.35it/s]
+Capturing CUDA graph shapes:  94%|█████████▍| 33/35 [00:09<00:00,  3.32it/s]
+Capturing CUDA graph shapes:  97%|█████████▋| 34/35 [00:10<00:00,  3.37it/s]
+Capturing CUDA graph shapes: 100%|██████████| 35/35 [00:10<00:00,  3.34it/s]
+Capturing CUDA graph shapes: 100%|██████████| 35/35 [00:10<00:00,  3.39it/s]
+INFO 07-10 15:47:11 model_runner.py:1535] Graph capturing finished in 10 secs, took 0.30 GiB
+INFO 07-10 15:47:11 llm_engine.py:431] init engine (profile, create kv cache, warmup model) took 14.11 seconds
+None
+
+Processed prompts:   0%|          | 0/136 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:   1%|          | 1/136 [00:00<01:54,  1.18it/s, est. speed input: 98.98 toks/s, output: 41.24 toks/s]
+Processed prompts:   1%|▏         | 2/136 [00:01<01:05,  2.04it/s, est. speed input: 140.54 toks/s, output: 77.16 toks/s]
+Processed prompts:   4%|▍         | 6/136 [00:01<00:17,  7.22it/s, est. speed input: 365.41 toks/s, output: 240.34 toks/s]
+Processed prompts:   9%|▉         | 12/136 [00:01<00:07, 15.98it/s, est. speed input: 671.78 toks/s, output: 496.46 toks/s]
+Processed prompts:  13%|█▎        | 18/136 [00:01<00:04, 24.01it/s, est. speed input: 942.79 toks/s, output: 729.79 toks/s]
+Processed prompts:  18%|█▊        | 25/136 [00:01<00:03, 33.37it/s, est. speed input: 1210.35 toks/s, output: 1011.32 toks/s]
+Processed prompts:  27%|██▋       | 37/136 [00:01<00:01, 53.12it/s, est. speed input: 1701.98 toks/s, output: 1528.72 toks/s]
+Processed prompts:  38%|███▊      | 51/136 [00:01<00:01, 72.75it/s, est. speed input: 2203.61 toks/s, output: 2127.57 toks/s]
+Processed prompts:  54%|█████▍    | 74/136 [00:01<00:00, 112.90it/s, est. speed input: 3050.07 toks/s, output: 3186.28 toks/s]
+Processed prompts:  70%|██████▉   | 95/136 [00:01<00:00, 135.44it/s, est. speed input: 3722.24 toks/s, output: 4116.23 toks/s]
+Processed prompts:  82%|████████▏ | 112/136 [00:02<00:00, 138.81it/s, est. speed input: 4146.95 toks/s, output: 4815.75 toks/s]
+Processed prompts:  93%|█████████▎| 127/136 [00:02<00:00, 128.39it/s, est. speed input: 4417.92 toks/s, output: 5382.70 toks/s]
+Processed prompts: 100%|██████████| 136/136 [00:03<00:00, 37.96it/s, est. speed input: 2933.77 toks/s, output: 3809.25 toks/s] 
+[rank0]:[W710 15:47:16.035821461 ProcessGroupNCCL.cpp:1250] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+Experiment complete! Output can be found at data/out/nopers/lp_test_75_output.json
+Cleaned temporary files.
+Keeping [] in profile
+Temp data file saved at data/processed/TEMP_2025-07-10 15:47:19.471892_sc_processed_test.json.
+	Running baseline: ['python', 'baselines.py', '--model_addr', 'Qwen/Qwen2.5-7B-Instruct', '--inputs_addr', 'data/processed/TEMP_2025-07-10 15:47:19.471892_sc_processed_test.json', '--output_addr', 'data/out/nopers/sc_test_75_output.json', '--temperature', '0.1', '--top_p', '0.95', '--max_tokens', '8192', '--num_generated_outputs', '1', '--num_contexts', '10', '--max_retries', '10', '--cache_dir', '/work/pi_hzamani_umass_edu/ozel_cache/']
+
+Generating train split: 0 examples [00:00, ? examples/s]
+Generating train split: 106 examples [00:00, 7525.96 examples/s]
+INFO 07-10 15:47:36 config.py:510] This model supports multiple tasks: {'reward', 'generate', 'embed', 'classify', 'score'}. Defaulting to 'generate'.
+INFO 07-10 15:47:36 llm_engine.py:234] Initializing an LLM engine (v0.6.6.post1) with config: model='Qwen/Qwen2.5-7B-Instruct', speculative_config=None, tokenizer='Qwen/Qwen2.5-7B-Instruct', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, override_neuron_config=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=32768, download_dir='/work/pi_hzamani_umass_edu/ozel_cache/', load_format=LoadFormat.AUTO, tensor_parallel_size=1, pipeline_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto, quantization_param_path=None, device_config=cuda, decoding_config=DecodingConfig(guided_decoding_backend='xgrammar'), observability_config=ObservabilityConfig(otlp_traces_endpoint=None, collect_model_forward_time=False, collect_model_execute_time=False), seed=0, served_model_name=Qwen/Qwen2.5-7B-Instruct, num_scheduler_steps=1, multi_step_stream_outputs=True, enable_prefix_caching=False, chunked_prefill_enabled=False, use_async_output_proc=True, disable_mm_preprocessor_cache=False, mm_processor_kwargs=None, pooler_config=None, compilation_config={"splitting_ops":["vllm.unified_attention","vllm.unified_attention_with_output"],"candidate_compile_sizes":[],"compile_sizes":[],"capture_sizes":[256,248,240,232,224,216,208,200,192,184,176,168,160,152,144,136,128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"max_capture_size":256}, use_cached_outputs=False, 
+INFO 07-10 15:47:37 selector.py:120] Using Flash Attention backend.
+INFO 07-10 15:47:38 model_runner.py:1094] Starting to load model Qwen/Qwen2.5-7B-Instruct...
+INFO 07-10 15:47:38 weight_utils.py:251] Using model weights format ['*.safetensors']
+
+Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+
+Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:00<00:01,  2.03it/s]
+
+Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:00<00:00,  2.02it/s]
+
+Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:01<00:00,  2.02it/s]
+
+Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:02<00:00,  1.97it/s]
+
+Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:02<00:00,  1.99it/s]
+
+INFO 07-10 15:47:41 model_runner.py:1099] Loading model weights took 14.2487 GB
+INFO 07-10 15:47:42 worker.py:241] Memory profiling takes 1.05 seconds
+INFO 07-10 15:47:42 worker.py:241] the current vLLM instance can use total_gpu_memory (79.19GiB) x gpu_memory_utilization (0.90) = 71.27GiB
+INFO 07-10 15:47:42 worker.py:241] model weights take 14.25GiB; non_torch_memory takes 0.21GiB; PyTorch activation peak memory takes 4.38GiB; the rest of the memory reserved for KV Cache is 52.44GiB.
+INFO 07-10 15:47:42 gpu_executor.py:76] # GPU blocks: 61364, # CPU blocks: 4681
+INFO 07-10 15:47:42 gpu_executor.py:80] Maximum concurrency for 32768 tokens per request: 29.96x
+INFO 07-10 15:47:44 model_runner.py:1415] Capturing cudagraphs for decoding. This may lead to unexpected consequences if the model is not static. To run the model in eager mode, set 'enforce_eager=True' or use '--enforce-eager' in the CLI. If out-of-memory error occurs during cudagraph capture, consider decreasing `gpu_memory_utilization` or switching to eager mode. You can also reduce the `max_num_seqs` as needed to decrease memory usage.
+
+Capturing CUDA graph shapes:   0%|          | 0/35 [00:00<?, ?it/s]
+Capturing CUDA graph shapes:   3%|▎         | 1/35 [00:00<00:09,  3.40it/s]
+Capturing CUDA graph shapes:   6%|▌         | 2/35 [00:00<00:09,  3.63it/s]
+Capturing CUDA graph shapes:   9%|▊         | 3/35 [00:00<00:08,  3.80it/s]
+Capturing CUDA graph shapes:  11%|█▏        | 4/35 [00:01<00:08,  3.80it/s]
+Capturing CUDA graph shapes:  14%|█▍        | 5/35 [00:01<00:07,  3.86it/s]
+Capturing CUDA graph shapes:  17%|█▋        | 6/35 [00:01<00:07,  3.86it/s]
+Capturing CUDA graph shapes:  20%|██        | 7/35 [00:01<00:07,  3.77it/s]
+Capturing CUDA graph shapes:  23%|██▎       | 8/35 [00:02<00:07,  3.85it/s]
+Capturing CUDA graph shapes:  26%|██▌       | 9/35 [00:02<00:06,  3.84it/s]
+Capturing CUDA graph shapes:  29%|██▊       | 10/35 [00:02<00:06,  3.90it/s]
+Capturing CUDA graph shapes:  31%|███▏      | 11/35 [00:02<00:06,  3.87it/s]
+Capturing CUDA graph shapes:  34%|███▍      | 12/35 [00:03<00:05,  3.92it/s]
+Capturing CUDA graph shapes:  37%|███▋      | 13/35 [00:03<00:05,  3.91it/s]
+Capturing CUDA graph shapes:  40%|████      | 14/35 [00:03<00:05,  3.89it/s]
+Capturing CUDA graph shapes:  43%|████▎     | 15/35 [00:03<00:05,  3.89it/s]
+Capturing CUDA graph shapes:  46%|████▌     | 16/35 [00:04<00:04,  3.90it/s]
+Capturing CUDA graph shapes:  49%|████▊     | 17/35 [00:04<00:04,  3.96it/s]
+Capturing CUDA graph shapes:  51%|█████▏    | 18/35 [00:04<00:04,  3.91it/s]
+Capturing CUDA graph shapes:  54%|█████▍    | 19/35 [00:04<00:04,  3.96it/s]
+Capturing CUDA graph shapes:  57%|█████▋    | 20/35 [00:05<00:03,  3.80it/s]
+Capturing CUDA graph shapes:  60%|██████    | 21/35 [00:05<00:03,  3.79it/s]
+Capturing CUDA graph shapes:  63%|██████▎   | 22/35 [00:05<00:03,  3.87it/s]
+Capturing CUDA graph shapes:  66%|██████▌   | 23/35 [00:05<00:03,  3.86it/s]
+Capturing CUDA graph shapes:  69%|██████▊   | 24/35 [00:06<00:02,  3.92it/s]
+Capturing CUDA graph shapes:  71%|███████▏  | 25/35 [00:06<00:02,  3.92it/s]
+Capturing CUDA graph shapes:  74%|███████▍  | 26/35 [00:06<00:02,  3.96it/s]
+Capturing CUDA graph shapes:  77%|███████▋  | 27/35 [00:06<00:02,  3.83it/s]
+Capturing CUDA graph shapes:  80%|████████  | 28/35 [00:07<00:01,  3.88it/s]
+Capturing CUDA graph shapes:  83%|████████▎ | 29/35 [00:07<00:01,  3.77it/s]
+Capturing CUDA graph shapes:  86%|████████▌ | 30/35 [00:07<00:01,  3.83it/s]
+Capturing CUDA graph shapes:  89%|████████▊ | 31/35 [00:08<00:01,  3.89it/s]
+Capturing CUDA graph shapes:  91%|█████████▏| 32/35 [00:08<00:00,  3.87it/s]
+Capturing CUDA graph shapes:  94%|█████████▍| 33/35 [00:08<00:00,  3.93it/s]
+Capturing CUDA graph shapes:  97%|█████████▋| 34/35 [00:08<00:00,  3.91it/s]
+Capturing CUDA graph shapes: 100%|██████████| 35/35 [00:09<00:00,  3.92it/s]
+Capturing CUDA graph shapes: 100%|██████████| 35/35 [00:09<00:00,  3.87it/s]
+INFO 07-10 15:47:54 model_runner.py:1535] Graph capturing finished in 9 secs, took 0.30 GiB
+INFO 07-10 15:47:54 llm_engine.py:431] init engine (profile, create kv cache, warmup model) took 12.79 seconds
+None
+
+Processed prompts:   0%|          | 0/106 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:   1%|          | 1/106 [00:00<00:49,  2.14it/s, est. speed input: 171.13 toks/s, output: 38.50 toks/s]
+Processed prompts:   2%|▏         | 2/106 [00:00<00:43,  2.38it/s, est. speed input: 174.27 toks/s, output: 73.68 toks/s]
+Processed prompts:   4%|▍         | 4/106 [00:01<00:21,  4.85it/s, est. speed input: 297.30 toks/s, output: 166.92 toks/s]
+Processed prompts:   8%|▊         | 9/106 [00:01<00:08, 11.47it/s, est. speed input: 577.61 toks/s, output: 405.08 toks/s]
+Processed prompts:  16%|█▌        | 17/106 [00:01<00:03, 23.10it/s, est. speed input: 991.11 toks/s, output: 809.72 toks/s]
+Processed prompts:  28%|██▊       | 30/106 [00:01<00:01, 44.15it/s, est. speed input: 1639.80 toks/s, output: 1493.22 toks/s]
+Processed prompts:  42%|████▏     | 45/106 [00:01<00:00, 66.06it/s, est. speed input: 2308.01 toks/s, output: 2272.53 toks/s]
+Processed prompts:  59%|█████▉    | 63/106 [00:01<00:00, 90.82it/s, est. speed input: 3031.71 toks/s, output: 3211.10 toks/s]
+Processed prompts:  81%|████████  | 86/106 [00:01<00:00, 123.55it/s, est. speed input: 3922.64 toks/s, output: 4453.99 toks/s]
+Processed prompts:  95%|█████████▌| 101/106 [00:01<00:00, 108.91it/s, est. speed input: 4201.86 toks/s, output: 5004.39 toks/s]
+Processed prompts: 100%|██████████| 106/106 [00:02<00:00, 50.35it/s, est. speed input: 4012.72 toks/s, output: 4903.30 toks/s] 
+[rank0]:[W710 15:47:57.883792925 ProcessGroupNCCL.cpp:1250] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+Experiment complete! Output can be found at data/out/nopers/sc_test_75_output.json
+Cleaned temporary files.

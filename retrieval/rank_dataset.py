@@ -51,7 +51,8 @@ if __name__ == "__main__":
         ids = [x['id'] for x in profile]
        
         ranked_profile = retrieve_top_k_with_contriver(contriver, tokenizer, corpus, profile, query, len(profile), args.batch_size)
-        ranked_profile = [{'id': ids[i], 'text': ranked_profile[i]['text']} for i in range(len(ranked_profile))]        
+        # ranked_profile = [{'id': ids[i], 'text': ranked_profile[i]['text']} for i in range(len(ranked_profile))]        
+        ranked_profile = [ranked_profile[i] for i in range(len(ranked_profile))]        
         data['profile'] = ranked_profile
         dataset_new.append(data)
 

@@ -1,0 +1,204 @@
+Keeping [] in profile
+Temp data file saved at data/processed/TEMP_2025-08-04 17:16:28.545670_ae_processed_validation.json.
+	Running baseline: ['python', 'baselines.py', '--model_addr', 'Qwen/Qwen2.5-7B-Instruct', '--inputs_addr', 'data/processed/TEMP_2025-08-04 17:16:28.545670_ae_processed_validation.json', '--output_addr', 'data/out/nopers/ae_validation_0_output.json', '--temperature', '0.1', '--top_p', '0.95', '--max_tokens', '8192', '--num_generated_outputs', '1', '--num_contexts', '10', '--max_retries', '10', '--cache_dir', '/work/pi_hzamani_umass_edu/ozel_cache/']
+
+Generating train split: 0 examples [00:00, ? examples/s]
+Generating train split: 341 examples [00:00, 8307.48 examples/s]
+INFO 08-04 17:16:52 config.py:510] This model supports multiple tasks: {'generate', 'embed', 'score', 'classify', 'reward'}. Defaulting to 'generate'.
+INFO 08-04 17:16:52 llm_engine.py:234] Initializing an LLM engine (v0.6.6.post1) with config: model='Qwen/Qwen2.5-7B-Instruct', speculative_config=None, tokenizer='Qwen/Qwen2.5-7B-Instruct', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, override_neuron_config=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=32768, download_dir='/work/pi_hzamani_umass_edu/ozel_cache/', load_format=LoadFormat.AUTO, tensor_parallel_size=1, pipeline_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto, quantization_param_path=None, device_config=cuda, decoding_config=DecodingConfig(guided_decoding_backend='xgrammar'), observability_config=ObservabilityConfig(otlp_traces_endpoint=None, collect_model_forward_time=False, collect_model_execute_time=False), seed=0, served_model_name=Qwen/Qwen2.5-7B-Instruct, num_scheduler_steps=1, multi_step_stream_outputs=True, enable_prefix_caching=False, chunked_prefill_enabled=False, use_async_output_proc=True, disable_mm_preprocessor_cache=False, mm_processor_kwargs=None, pooler_config=None, compilation_config={"splitting_ops":["vllm.unified_attention","vllm.unified_attention_with_output"],"candidate_compile_sizes":[],"compile_sizes":[],"capture_sizes":[256,248,240,232,224,216,208,200,192,184,176,168,160,152,144,136,128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"max_capture_size":256}, use_cached_outputs=False, 
+INFO 08-04 17:16:53 selector.py:120] Using Flash Attention backend.
+INFO 08-04 17:16:54 model_runner.py:1094] Starting to load model Qwen/Qwen2.5-7B-Instruct...
+INFO 08-04 17:16:54 weight_utils.py:251] Using model weights format ['*.safetensors']
+
+Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+
+Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:19<00:58, 19.41s/it]
+
+Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:28<00:26, 13.48s/it]
+
+Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:40<00:12, 12.73s/it]
+
+Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:48<00:00, 10.99s/it]
+
+Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:48<00:00, 12.22s/it]
+
+INFO 08-04 17:17:43 model_runner.py:1099] Loading model weights took 14.2487 GB
+INFO 08-04 17:17:44 worker.py:241] Memory profiling takes 1.06 seconds
+INFO 08-04 17:17:44 worker.py:241] the current vLLM instance can use total_gpu_memory (79.19GiB) x gpu_memory_utilization (0.90) = 71.27GiB
+INFO 08-04 17:17:44 worker.py:241] model weights take 14.25GiB; non_torch_memory takes 0.21GiB; PyTorch activation peak memory takes 4.38GiB; the rest of the memory reserved for KV Cache is 52.44GiB.
+INFO 08-04 17:17:44 gpu_executor.py:76] # GPU blocks: 61364, # CPU blocks: 4681
+INFO 08-04 17:17:44 gpu_executor.py:80] Maximum concurrency for 32768 tokens per request: 29.96x
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/home/oyilmazel_umass_edu/LaMP-QA/baselines.py", line 97, in <module>
+[rank0]:     llm, lora_req = load_llm(args.model_addr, args.cache_dir)
+[rank0]:                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/LaMP-QA/baselines.py", line 15, in load_llm
+[rank0]:     return LLM(model_addr, download_dir=cache_dir), None
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/utils.py", line 986, in inner
+[rank0]:     return fn(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/entrypoints/llm.py", line 230, in __init__
+[rank0]:     self.llm_engine = self.engine_class.from_engine_args(
+[rank0]:                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/engine/llm_engine.py", line 517, in from_engine_args
+[rank0]:     engine = cls(
+[rank0]:              ^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/engine/llm_engine.py", line 276, in __init__
+[rank0]:     self._initialize_kv_caches()
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/engine/llm_engine.py", line 429, in _initialize_kv_caches
+[rank0]:     self.model_executor.initialize_cache(num_gpu_blocks, num_cpu_blocks)
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/executor/gpu_executor.py", line 83, in initialize_cache
+[rank0]:     self.driver_worker.initialize_cache(num_gpu_blocks, num_cpu_blocks)
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/worker/worker.py", line 274, in initialize_cache
+[rank0]:     self._init_cache_engine()
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/worker/worker.py", line 279, in _init_cache_engine
+[rank0]:     self.cache_engine = [
+[rank0]:                         ^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/worker/worker.py", line 280, in <listcomp>
+[rank0]:     CacheEngine(self.cache_config, self.model_config,
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/worker/cache_engine.py", line 62, in __init__
+[rank0]:     self.gpu_cache = self._allocate_kv_cache(
+[rank0]:                      ^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/worker/cache_engine.py", line 81, in _allocate_kv_cache
+[rank0]:     torch.zeros(kv_cache_shape,
+[rank0]: torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 1.87 GiB. GPU 0 has a total capacity of 79.19 GiB of which 1.05 GiB is free. Process 4121346 has 12.56 GiB memory in use. Including non-PyTorch memory, this process has 65.57 GiB memory in use. Of the allocated memory 64.85 GiB is allocated by PyTorch, and 55.36 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+[rank0]:[W804 17:17:45.630951640 ProcessGroupNCCL.cpp:1250] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+Experiment complete! Output can be found at data/out/nopers/ae_validation_0_output.json
+Cleaned temporary files.
+Keeping [] in profile
+Temp data file saved at data/processed/TEMP_2025-08-04 17:17:46.884651_lp_processed_validation.json.
+	Running baseline: ['python', 'baselines.py', '--model_addr', 'Qwen/Qwen2.5-7B-Instruct', '--inputs_addr', 'data/processed/TEMP_2025-08-04 17:17:46.884651_lp_processed_validation.json', '--output_addr', 'data/out/nopers/lp_validation_0_output.json', '--temperature', '0.1', '--top_p', '0.95', '--max_tokens', '8192', '--num_generated_outputs', '1', '--num_contexts', '10', '--max_retries', '10', '--cache_dir', '/work/pi_hzamani_umass_edu/ozel_cache/']
+
+Generating train split: 0 examples [00:00, ? examples/s]
+Generating train split: 452 examples [00:00, 23770.02 examples/s]
+INFO 08-04 17:18:04 config.py:510] This model supports multiple tasks: {'score', 'classify', 'generate', 'embed', 'reward'}. Defaulting to 'generate'.
+INFO 08-04 17:18:04 llm_engine.py:234] Initializing an LLM engine (v0.6.6.post1) with config: model='Qwen/Qwen2.5-7B-Instruct', speculative_config=None, tokenizer='Qwen/Qwen2.5-7B-Instruct', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, override_neuron_config=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=32768, download_dir='/work/pi_hzamani_umass_edu/ozel_cache/', load_format=LoadFormat.AUTO, tensor_parallel_size=1, pipeline_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto, quantization_param_path=None, device_config=cuda, decoding_config=DecodingConfig(guided_decoding_backend='xgrammar'), observability_config=ObservabilityConfig(otlp_traces_endpoint=None, collect_model_forward_time=False, collect_model_execute_time=False), seed=0, served_model_name=Qwen/Qwen2.5-7B-Instruct, num_scheduler_steps=1, multi_step_stream_outputs=True, enable_prefix_caching=False, chunked_prefill_enabled=False, use_async_output_proc=True, disable_mm_preprocessor_cache=False, mm_processor_kwargs=None, pooler_config=None, compilation_config={"splitting_ops":["vllm.unified_attention","vllm.unified_attention_with_output"],"candidate_compile_sizes":[],"compile_sizes":[],"capture_sizes":[256,248,240,232,224,216,208,200,192,184,176,168,160,152,144,136,128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"max_capture_size":256}, use_cached_outputs=False, 
+INFO 08-04 17:18:06 selector.py:120] Using Flash Attention backend.
+INFO 08-04 17:18:06 model_runner.py:1094] Starting to load model Qwen/Qwen2.5-7B-Instruct...
+INFO 08-04 17:18:06 weight_utils.py:251] Using model weights format ['*.safetensors']
+
+Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+
+Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:00<00:01,  1.83it/s]
+
+Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:01<00:01,  1.82it/s]
+
+Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:01<00:00,  1.79it/s]
+
+Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:02<00:00,  1.83it/s]
+
+Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:02<00:00,  1.82it/s]
+
+INFO 08-04 17:18:09 model_runner.py:1099] Loading model weights took 14.2487 GB
+INFO 08-04 17:18:10 worker.py:241] Memory profiling takes 1.05 seconds
+INFO 08-04 17:18:10 worker.py:241] the current vLLM instance can use total_gpu_memory (79.19GiB) x gpu_memory_utilization (0.90) = 71.27GiB
+INFO 08-04 17:18:10 worker.py:241] model weights take 14.25GiB; non_torch_memory takes 0.21GiB; PyTorch activation peak memory takes 4.38GiB; the rest of the memory reserved for KV Cache is 52.44GiB.
+INFO 08-04 17:18:10 gpu_executor.py:76] # GPU blocks: 61364, # CPU blocks: 4681
+INFO 08-04 17:18:10 gpu_executor.py:80] Maximum concurrency for 32768 tokens per request: 29.96x
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/home/oyilmazel_umass_edu/LaMP-QA/baselines.py", line 97, in <module>
+[rank0]:     llm, lora_req = load_llm(args.model_addr, args.cache_dir)
+[rank0]:                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/LaMP-QA/baselines.py", line 15, in load_llm
+[rank0]:     return LLM(model_addr, download_dir=cache_dir), None
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/utils.py", line 986, in inner
+[rank0]:     return fn(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/entrypoints/llm.py", line 230, in __init__
+[rank0]:     self.llm_engine = self.engine_class.from_engine_args(
+[rank0]:                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/engine/llm_engine.py", line 517, in from_engine_args
+[rank0]:     engine = cls(
+[rank0]:              ^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/engine/llm_engine.py", line 276, in __init__
+[rank0]:     self._initialize_kv_caches()
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/engine/llm_engine.py", line 429, in _initialize_kv_caches
+[rank0]:     self.model_executor.initialize_cache(num_gpu_blocks, num_cpu_blocks)
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/executor/gpu_executor.py", line 83, in initialize_cache
+[rank0]:     self.driver_worker.initialize_cache(num_gpu_blocks, num_cpu_blocks)
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/worker/worker.py", line 274, in initialize_cache
+[rank0]:     self._init_cache_engine()
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/worker/worker.py", line 279, in _init_cache_engine
+[rank0]:     self.cache_engine = [
+[rank0]:                         ^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/worker/worker.py", line 280, in <listcomp>
+[rank0]:     CacheEngine(self.cache_config, self.model_config,
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/worker/cache_engine.py", line 62, in __init__
+[rank0]:     self.gpu_cache = self._allocate_kv_cache(
+[rank0]:                      ^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/worker/cache_engine.py", line 81, in _allocate_kv_cache
+[rank0]:     torch.zeros(kv_cache_shape,
+[rank0]: torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 1.87 GiB. GPU 0 has a total capacity of 79.19 GiB of which 1.05 GiB is free. Process 4121346 has 12.56 GiB memory in use. Including non-PyTorch memory, this process has 65.57 GiB memory in use. Of the allocated memory 64.85 GiB is allocated by PyTorch, and 55.36 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+[rank0]:[W804 17:18:10.367779930 ProcessGroupNCCL.cpp:1250] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+Experiment complete! Output can be found at data/out/nopers/lp_validation_0_output.json
+Cleaned temporary files.
+Keeping [] in profile
+Temp data file saved at data/processed/TEMP_2025-08-04 17:18:12.243895_sc_processed_validation.json.
+	Running baseline: ['python', 'baselines.py', '--model_addr', 'Qwen/Qwen2.5-7B-Instruct', '--inputs_addr', 'data/processed/TEMP_2025-08-04 17:18:12.243895_sc_processed_validation.json', '--output_addr', 'data/out/nopers/sc_validation_0_output.json', '--temperature', '0.1', '--top_p', '0.95', '--max_tokens', '8192', '--num_generated_outputs', '1', '--num_contexts', '10', '--max_retries', '10', '--cache_dir', '/work/pi_hzamani_umass_edu/ozel_cache/']
+
+Generating train split: 0 examples [00:00, ? examples/s]
+Generating train split: 320 examples [00:00, 14787.88 examples/s]
+INFO 08-04 17:18:26 config.py:510] This model supports multiple tasks: {'reward', 'score', 'embed', 'classify', 'generate'}. Defaulting to 'generate'.
+INFO 08-04 17:18:26 llm_engine.py:234] Initializing an LLM engine (v0.6.6.post1) with config: model='Qwen/Qwen2.5-7B-Instruct', speculative_config=None, tokenizer='Qwen/Qwen2.5-7B-Instruct', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, override_neuron_config=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=32768, download_dir='/work/pi_hzamani_umass_edu/ozel_cache/', load_format=LoadFormat.AUTO, tensor_parallel_size=1, pipeline_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto, quantization_param_path=None, device_config=cuda, decoding_config=DecodingConfig(guided_decoding_backend='xgrammar'), observability_config=ObservabilityConfig(otlp_traces_endpoint=None, collect_model_forward_time=False, collect_model_execute_time=False), seed=0, served_model_name=Qwen/Qwen2.5-7B-Instruct, num_scheduler_steps=1, multi_step_stream_outputs=True, enable_prefix_caching=False, chunked_prefill_enabled=False, use_async_output_proc=True, disable_mm_preprocessor_cache=False, mm_processor_kwargs=None, pooler_config=None, compilation_config={"splitting_ops":["vllm.unified_attention","vllm.unified_attention_with_output"],"candidate_compile_sizes":[],"compile_sizes":[],"capture_sizes":[256,248,240,232,224,216,208,200,192,184,176,168,160,152,144,136,128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"max_capture_size":256}, use_cached_outputs=False, 
+INFO 08-04 17:18:27 selector.py:120] Using Flash Attention backend.
+INFO 08-04 17:18:27 model_runner.py:1094] Starting to load model Qwen/Qwen2.5-7B-Instruct...
+INFO 08-04 17:18:27 weight_utils.py:251] Using model weights format ['*.safetensors']
+
+Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+
+Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:00<00:01,  1.99it/s]
+
+Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:01<00:01,  1.97it/s]
+
+Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:01<00:00,  1.92it/s]
+
+Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:02<00:00,  1.97it/s]
+
+Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:02<00:00,  1.97it/s]
+
+INFO 08-04 17:18:30 model_runner.py:1099] Loading model weights took 14.2487 GB
+INFO 08-04 17:18:31 worker.py:241] Memory profiling takes 1.04 seconds
+INFO 08-04 17:18:31 worker.py:241] the current vLLM instance can use total_gpu_memory (79.19GiB) x gpu_memory_utilization (0.90) = 71.27GiB
+INFO 08-04 17:18:31 worker.py:241] model weights take 14.25GiB; non_torch_memory takes 0.21GiB; PyTorch activation peak memory takes 4.38GiB; the rest of the memory reserved for KV Cache is 52.44GiB.
+INFO 08-04 17:18:31 gpu_executor.py:76] # GPU blocks: 61364, # CPU blocks: 4681
+INFO 08-04 17:18:31 gpu_executor.py:80] Maximum concurrency for 32768 tokens per request: 29.96x
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/home/oyilmazel_umass_edu/LaMP-QA/baselines.py", line 97, in <module>
+[rank0]:     llm, lora_req = load_llm(args.model_addr, args.cache_dir)
+[rank0]:                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/LaMP-QA/baselines.py", line 15, in load_llm
+[rank0]:     return LLM(model_addr, download_dir=cache_dir), None
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/utils.py", line 986, in inner
+[rank0]:     return fn(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/entrypoints/llm.py", line 230, in __init__
+[rank0]:     self.llm_engine = self.engine_class.from_engine_args(
+[rank0]:                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/engine/llm_engine.py", line 517, in from_engine_args
+[rank0]:     engine = cls(
+[rank0]:              ^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/engine/llm_engine.py", line 276, in __init__
+[rank0]:     self._initialize_kv_caches()
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/engine/llm_engine.py", line 429, in _initialize_kv_caches
+[rank0]:     self.model_executor.initialize_cache(num_gpu_blocks, num_cpu_blocks)
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/executor/gpu_executor.py", line 83, in initialize_cache
+[rank0]:     self.driver_worker.initialize_cache(num_gpu_blocks, num_cpu_blocks)
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/worker/worker.py", line 274, in initialize_cache
+[rank0]:     self._init_cache_engine()
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/worker/worker.py", line 279, in _init_cache_engine
+[rank0]:     self.cache_engine = [
+[rank0]:                         ^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/worker/worker.py", line 280, in <listcomp>
+[rank0]:     CacheEngine(self.cache_config, self.model_config,
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/worker/cache_engine.py", line 62, in __init__
+[rank0]:     self.gpu_cache = self._allocate_kv_cache(
+[rank0]:                      ^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/worker/cache_engine.py", line 81, in _allocate_kv_cache
+[rank0]:     torch.zeros(kv_cache_shape,
+[rank0]: torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 1.87 GiB. GPU 0 has a total capacity of 79.19 GiB of which 1.05 GiB is free. Process 4121346 has 12.56 GiB memory in use. Including non-PyTorch memory, this process has 65.57 GiB memory in use. Of the allocated memory 64.85 GiB is allocated by PyTorch, and 55.36 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+[rank0]:[W804 17:18:31.412954933 ProcessGroupNCCL.cpp:1250] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+Experiment complete! Output can be found at data/out/nopers/sc_validation_0_output.json
+Cleaned temporary files.

@@ -1,0 +1,350 @@
+No conda package cache directories found outside your home directory. To
+prevent conda from filling up your home directory, you can create a new
+directory at `/work/pi_<your_pi_name>/$USER/.conda/pkgs` and reload the module. 
+No conda environment directories found outside your home directory. To prevent
+conda from filling up your home directory, you can create a new directory at
+`/work/pi_<your_pi_name>/$USER/.conda/envs` and reload the module. 
+Loading conda version miniforge3-24.7.1
+Loading cuda version 12.6
+Loading safetensors checkpoint shards:   0% Completed | 0/17 [00:00<?, ?it/s]
+Loading safetensors checkpoint shards:   6% Completed | 1/17 [00:00<00:09,  1.68it/s]
+Loading safetensors checkpoint shards:  12% Completed | 2/17 [00:01<00:08,  1.71it/s]
+Loading safetensors checkpoint shards:  18% Completed | 3/17 [00:01<00:08,  1.71it/s]
+Loading safetensors checkpoint shards:  24% Completed | 4/17 [00:02<00:07,  1.76it/s]
+Loading safetensors checkpoint shards:  29% Completed | 5/17 [00:02<00:06,  1.76it/s]
+Loading safetensors checkpoint shards:  35% Completed | 6/17 [00:03<00:06,  1.75it/s]
+Loading safetensors checkpoint shards:  41% Completed | 7/17 [00:04<00:05,  1.73it/s]
+Loading safetensors checkpoint shards:  47% Completed | 8/17 [00:04<00:05,  1.73it/s]
+Loading safetensors checkpoint shards:  53% Completed | 9/17 [00:05<00:04,  1.71it/s]
+Loading safetensors checkpoint shards:  59% Completed | 10/17 [00:05<00:04,  1.70it/s]
+Loading safetensors checkpoint shards:  65% Completed | 11/17 [00:06<00:03,  1.77it/s]
+Loading safetensors checkpoint shards:  71% Completed | 12/17 [00:06<00:02,  1.72it/s]
+Loading safetensors checkpoint shards:  76% Completed | 13/17 [00:07<00:02,  1.69it/s]
+Loading safetensors checkpoint shards:  82% Completed | 14/17 [00:08<00:01,  1.68it/s]
+Loading safetensors checkpoint shards:  88% Completed | 15/17 [00:08<00:01,  1.69it/s]
+Loading safetensors checkpoint shards:  94% Completed | 16/17 [00:09<00:00,  1.69it/s]
+Loading safetensors checkpoint shards: 100% Completed | 17/17 [00:09<00:00,  1.69it/s]
+Loading safetensors checkpoint shards: 100% Completed | 17/17 [00:09<00:00,  1.71it/s]
+
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/worker/model_runner_base.py", line 116, in _wrapper
+[rank0]:     return func(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/worker/model_runner.py", line 1691, in execute_model
+[rank0]:     hidden_or_intermediate_states = model_executable(
+[rank0]:                                     ^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/model_executor/models/qwen2.py", line 477, in forward
+[rank0]:     hidden_states = self.model(input_ids, positions, kv_caches,
+[rank0]:                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/compilation/decorators.py", line 168, in __call__
+[rank0]:     return self.forward(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/model_executor/models/qwen2.py", line 340, in forward
+[rank0]:     hidden_states, residual = layer(
+[rank0]:                               ^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/model_executor/models/qwen2.py", line 258, in forward
+[rank0]:     hidden_states = self.mlp(hidden_states)
+[rank0]:                     ^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/model_executor/models/qwen2.py", line 94, in forward
+[rank0]:     x = self.act_fn(gate_up)
+[rank0]:         ^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/model_executor/custom_op.py", line 24, in forward
+[rank0]:     return self._forward_method(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/model_executor/layers/activation.py", line 71, in forward_cuda
+[rank0]:     out = torch.empty(output_shape, dtype=x.dtype, device=x.device)
+[rank0]:           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]: torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 1.65 GiB. GPU 0 has a total capacity of 79.19 GiB of which 985.62 MiB is free. Process 4121346 has 12.56 GiB memory in use. Including non-PyTorch memory, this process has 65.65 GiB memory in use. Of the allocated memory 64.98 GiB is allocated by PyTorch, and 16.12 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+
+[rank0]: The above exception was the direct cause of the following exception:
+
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/home/oyilmazel_umass_edu/LaMP-QA/evaluate_responses.py", line 35, in <module>
+[rank0]:     llm = LLM(args.evaluator_llm, download_dir=args.cache_dir, max_model_len=args.max_length, tensor_parallel_size=args.tensor_parallel_size, gpu_memory_utilization=0.95)
+[rank0]:           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/utils.py", line 986, in inner
+[rank0]:     return fn(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/entrypoints/llm.py", line 230, in __init__
+[rank0]:     self.llm_engine = self.engine_class.from_engine_args(
+[rank0]:                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/engine/llm_engine.py", line 517, in from_engine_args
+[rank0]:     engine = cls(
+[rank0]:              ^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/engine/llm_engine.py", line 276, in __init__
+[rank0]:     self._initialize_kv_caches()
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/engine/llm_engine.py", line 416, in _initialize_kv_caches
+[rank0]:     self.model_executor.determine_num_available_blocks())
+[rank0]:     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/executor/gpu_executor.py", line 68, in determine_num_available_blocks
+[rank0]:     return self.driver_worker.determine_num_available_blocks()
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+[rank0]:     return func(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/worker/worker.py", line 202, in determine_num_available_blocks
+[rank0]:     self.model_runner.profile_run()
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+[rank0]:     return func(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/worker/model_runner.py", line 1331, in profile_run
+[rank0]:     self.execute_model(model_input, kv_caches, intermediate_tensors)
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+[rank0]:     return func(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/worker/model_runner_base.py", line 152, in _wrapper
+[rank0]:     raise type(err)(
+[rank0]: torch.OutOfMemoryError: Error in model execution (input dumped to /tmp/err_execute_model_input_20250804-152225.pkl): CUDA out of memory. Tried to allocate 1.65 GiB. GPU 0 has a total capacity of 79.19 GiB of which 985.62 MiB is free. Process 4121346 has 12.56 GiB memory in use. Including non-PyTorch memory, this process has 65.65 GiB memory in use. Of the allocated memory 64.98 GiB is allocated by PyTorch, and 16.12 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+[rank0]:[W804 15:22:25.467714501 ProcessGroupNCCL.cpp:1250] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+Loading safetensors checkpoint shards:   0% Completed | 0/17 [00:00<?, ?it/s]
+Loading safetensors checkpoint shards:   6% Completed | 1/17 [00:00<00:09,  1.65it/s]
+Loading safetensors checkpoint shards:  12% Completed | 2/17 [00:01<00:08,  1.74it/s]
+Loading safetensors checkpoint shards:  18% Completed | 3/17 [00:01<00:07,  1.82it/s]
+Loading safetensors checkpoint shards:  24% Completed | 4/17 [00:02<00:07,  1.84it/s]
+Loading safetensors checkpoint shards:  29% Completed | 5/17 [00:02<00:06,  1.87it/s]
+Loading safetensors checkpoint shards:  35% Completed | 6/17 [00:03<00:05,  1.86it/s]
+Loading safetensors checkpoint shards:  41% Completed | 7/17 [00:03<00:05,  1.87it/s]
+Loading safetensors checkpoint shards:  47% Completed | 8/17 [00:04<00:04,  1.86it/s]
+Loading safetensors checkpoint shards:  53% Completed | 9/17 [00:04<00:04,  1.87it/s]
+Loading safetensors checkpoint shards:  59% Completed | 10/17 [00:05<00:03,  1.85it/s]
+Loading safetensors checkpoint shards:  65% Completed | 11/17 [00:05<00:03,  1.95it/s]
+Loading safetensors checkpoint shards:  71% Completed | 12/17 [00:06<00:02,  1.89it/s]
+Loading safetensors checkpoint shards:  76% Completed | 13/17 [00:06<00:02,  1.87it/s]
+Loading safetensors checkpoint shards:  82% Completed | 14/17 [00:07<00:01,  1.86it/s]
+Loading safetensors checkpoint shards:  88% Completed | 15/17 [00:08<00:01,  1.87it/s]
+Loading safetensors checkpoint shards:  94% Completed | 16/17 [00:08<00:00,  1.87it/s]
+Loading safetensors checkpoint shards: 100% Completed | 17/17 [00:09<00:00,  1.87it/s]
+Loading safetensors checkpoint shards: 100% Completed | 17/17 [00:09<00:00,  1.86it/s]
+
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/worker/model_runner_base.py", line 116, in _wrapper
+[rank0]:     return func(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/worker/model_runner.py", line 1691, in execute_model
+[rank0]:     hidden_or_intermediate_states = model_executable(
+[rank0]:                                     ^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/model_executor/models/qwen2.py", line 477, in forward
+[rank0]:     hidden_states = self.model(input_ids, positions, kv_caches,
+[rank0]:                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/compilation/decorators.py", line 168, in __call__
+[rank0]:     return self.forward(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/model_executor/models/qwen2.py", line 340, in forward
+[rank0]:     hidden_states, residual = layer(
+[rank0]:                               ^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/model_executor/models/qwen2.py", line 258, in forward
+[rank0]:     hidden_states = self.mlp(hidden_states)
+[rank0]:                     ^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/model_executor/models/qwen2.py", line 94, in forward
+[rank0]:     x = self.act_fn(gate_up)
+[rank0]:         ^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/model_executor/custom_op.py", line 24, in forward
+[rank0]:     return self._forward_method(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/model_executor/layers/activation.py", line 71, in forward_cuda
+[rank0]:     out = torch.empty(output_shape, dtype=x.dtype, device=x.device)
+[rank0]:           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]: torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 1.65 GiB. GPU 0 has a total capacity of 79.19 GiB of which 985.62 MiB is free. Process 4121346 has 12.56 GiB memory in use. Including non-PyTorch memory, this process has 65.65 GiB memory in use. Of the allocated memory 64.98 GiB is allocated by PyTorch, and 16.12 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+
+[rank0]: The above exception was the direct cause of the following exception:
+
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/home/oyilmazel_umass_edu/LaMP-QA/evaluate_responses.py", line 35, in <module>
+[rank0]:     llm = LLM(args.evaluator_llm, download_dir=args.cache_dir, max_model_len=args.max_length, tensor_parallel_size=args.tensor_parallel_size, gpu_memory_utilization=0.95)
+[rank0]:           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/utils.py", line 986, in inner
+[rank0]:     return fn(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/entrypoints/llm.py", line 230, in __init__
+[rank0]:     self.llm_engine = self.engine_class.from_engine_args(
+[rank0]:                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/engine/llm_engine.py", line 517, in from_engine_args
+[rank0]:     engine = cls(
+[rank0]:              ^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/engine/llm_engine.py", line 276, in __init__
+[rank0]:     self._initialize_kv_caches()
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/engine/llm_engine.py", line 416, in _initialize_kv_caches
+[rank0]:     self.model_executor.determine_num_available_blocks())
+[rank0]:     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/executor/gpu_executor.py", line 68, in determine_num_available_blocks
+[rank0]:     return self.driver_worker.determine_num_available_blocks()
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+[rank0]:     return func(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/worker/worker.py", line 202, in determine_num_available_blocks
+[rank0]:     self.model_runner.profile_run()
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+[rank0]:     return func(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/worker/model_runner.py", line 1331, in profile_run
+[rank0]:     self.execute_model(model_input, kv_caches, intermediate_tensors)
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+[rank0]:     return func(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/worker/model_runner_base.py", line 152, in _wrapper
+[rank0]:     raise type(err)(
+[rank0]: torch.OutOfMemoryError: Error in model execution (input dumped to /tmp/err_execute_model_input_20250804-152252.pkl): CUDA out of memory. Tried to allocate 1.65 GiB. GPU 0 has a total capacity of 79.19 GiB of which 985.62 MiB is free. Process 4121346 has 12.56 GiB memory in use. Including non-PyTorch memory, this process has 65.65 GiB memory in use. Of the allocated memory 64.98 GiB is allocated by PyTorch, and 16.12 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+[rank0]:[W804 15:22:53.018245614 ProcessGroupNCCL.cpp:1250] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+Loading safetensors checkpoint shards:   0% Completed | 0/17 [00:00<?, ?it/s]
+Loading safetensors checkpoint shards:   6% Completed | 1/17 [00:00<00:09,  1.66it/s]
+Loading safetensors checkpoint shards:  12% Completed | 2/17 [00:01<00:08,  1.75it/s]
+Loading safetensors checkpoint shards:  18% Completed | 3/17 [00:01<00:07,  1.81it/s]
+Loading safetensors checkpoint shards:  24% Completed | 4/17 [00:02<00:07,  1.83it/s]
+Loading safetensors checkpoint shards:  29% Completed | 5/17 [00:02<00:06,  1.86it/s]
+Loading safetensors checkpoint shards:  35% Completed | 6/17 [00:03<00:05,  1.86it/s]
+Loading safetensors checkpoint shards:  41% Completed | 7/17 [00:03<00:05,  1.86it/s]
+Loading safetensors checkpoint shards:  47% Completed | 8/17 [00:04<00:04,  1.85it/s]
+Loading safetensors checkpoint shards:  53% Completed | 9/17 [00:04<00:04,  1.84it/s]
+Loading safetensors checkpoint shards:  59% Completed | 10/17 [00:05<00:03,  1.83it/s]
+Loading safetensors checkpoint shards:  65% Completed | 11/17 [00:05<00:03,  1.92it/s]
+Loading safetensors checkpoint shards:  71% Completed | 12/17 [00:06<00:02,  1.87it/s]
+Loading safetensors checkpoint shards:  76% Completed | 13/17 [00:07<00:02,  1.83it/s]
+Loading safetensors checkpoint shards:  82% Completed | 14/17 [00:07<00:01,  1.84it/s]
+Loading safetensors checkpoint shards:  88% Completed | 15/17 [00:08<00:01,  1.84it/s]
+Loading safetensors checkpoint shards:  94% Completed | 16/17 [00:08<00:00,  1.85it/s]
+Loading safetensors checkpoint shards: 100% Completed | 17/17 [00:09<00:00,  1.84it/s]
+Loading safetensors checkpoint shards: 100% Completed | 17/17 [00:09<00:00,  1.84it/s]
+
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/worker/model_runner_base.py", line 116, in _wrapper
+[rank0]:     return func(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/worker/model_runner.py", line 1691, in execute_model
+[rank0]:     hidden_or_intermediate_states = model_executable(
+[rank0]:                                     ^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/model_executor/models/qwen2.py", line 477, in forward
+[rank0]:     hidden_states = self.model(input_ids, positions, kv_caches,
+[rank0]:                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/compilation/decorators.py", line 168, in __call__
+[rank0]:     return self.forward(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/model_executor/models/qwen2.py", line 340, in forward
+[rank0]:     hidden_states, residual = layer(
+[rank0]:                               ^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/model_executor/models/qwen2.py", line 258, in forward
+[rank0]:     hidden_states = self.mlp(hidden_states)
+[rank0]:                     ^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/model_executor/models/qwen2.py", line 94, in forward
+[rank0]:     x = self.act_fn(gate_up)
+[rank0]:         ^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/model_executor/custom_op.py", line 24, in forward
+[rank0]:     return self._forward_method(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/model_executor/layers/activation.py", line 71, in forward_cuda
+[rank0]:     out = torch.empty(output_shape, dtype=x.dtype, device=x.device)
+[rank0]:           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]: torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 1.65 GiB. GPU 0 has a total capacity of 79.19 GiB of which 985.62 MiB is free. Process 4121346 has 12.56 GiB memory in use. Including non-PyTorch memory, this process has 65.65 GiB memory in use. Of the allocated memory 64.98 GiB is allocated by PyTorch, and 16.12 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+
+[rank0]: The above exception was the direct cause of the following exception:
+
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/home/oyilmazel_umass_edu/LaMP-QA/evaluate_responses.py", line 35, in <module>
+[rank0]:     llm = LLM(args.evaluator_llm, download_dir=args.cache_dir, max_model_len=args.max_length, tensor_parallel_size=args.tensor_parallel_size, gpu_memory_utilization=0.95)
+[rank0]:           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/utils.py", line 986, in inner
+[rank0]:     return fn(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/entrypoints/llm.py", line 230, in __init__
+[rank0]:     self.llm_engine = self.engine_class.from_engine_args(
+[rank0]:                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/engine/llm_engine.py", line 517, in from_engine_args
+[rank0]:     engine = cls(
+[rank0]:              ^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/engine/llm_engine.py", line 276, in __init__
+[rank0]:     self._initialize_kv_caches()
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/engine/llm_engine.py", line 416, in _initialize_kv_caches
+[rank0]:     self.model_executor.determine_num_available_blocks())
+[rank0]:     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/executor/gpu_executor.py", line 68, in determine_num_available_blocks
+[rank0]:     return self.driver_worker.determine_num_available_blocks()
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+[rank0]:     return func(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/worker/worker.py", line 202, in determine_num_available_blocks
+[rank0]:     self.model_runner.profile_run()
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+[rank0]:     return func(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/worker/model_runner.py", line 1331, in profile_run
+[rank0]:     self.execute_model(model_input, kv_caches, intermediate_tensors)
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+[rank0]:     return func(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/oyilmazel_umass_edu/.conda/envs/lamp/lib/python3.11/site-packages/vllm/worker/model_runner_base.py", line 152, in _wrapper
+[rank0]:     raise type(err)(
+[rank0]: torch.OutOfMemoryError: Error in model execution (input dumped to /tmp/err_execute_model_input_20250804-152323.pkl): CUDA out of memory. Tried to allocate 1.65 GiB. GPU 0 has a total capacity of 79.19 GiB of which 985.62 MiB is free. Process 4121346 has 12.56 GiB memory in use. Including non-PyTorch memory, this process has 65.65 GiB memory in use. Of the allocated memory 64.98 GiB is allocated by PyTorch, and 16.12 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+[rank0]:[W804 15:23:24.000406713 ProcessGroupNCCL.cpp:1250] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())

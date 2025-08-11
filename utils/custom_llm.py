@@ -5,7 +5,6 @@ import backoff
 import concurrent
 import tqdm
 import time
-import google.generativeai as genai
 import concurrent.futures as futures
 
 def batchify(lst, n):

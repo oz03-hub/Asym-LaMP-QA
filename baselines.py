@@ -1,7 +1,7 @@
 from vllm import LLM, SamplingParams
 import argparse
 from data.dataset import load_dataset
-from data.formetters import get_baseline_no_rag_formatter, get_baseline_rag_formatter
+from data.formetters import get_baseline_no_rag_formatter, get_baseline_rag_formatter, get_baseline_public_formatter, get_baseline_2_aug_categorized_formatter
 import json
 from utils.custom_llm import OpenAILLM
 from utils.json_utils import str_to_json
@@ -39,13 +39,17 @@ def parse_json(json_str):
 def prepare_prompts(dataset, formater):
     reshaped_dataset = {
         "question": [],
+        "target_subcat": [],
         "id": [],
-        "profile": []
+        "profile": [],
+        "public_posts": [],
     }
     for data in dataset:
         reshaped_dataset["question"].append(data["question"])
+        reshaped_dataset["target_subcat"].append(data["category"])
         reshaped_dataset["id"].append(data["id"])
         reshaped_dataset["profile"].append(data["profile"])
+        reshaped_dataset["public_posts"].append(data["public_posts"])
     return formater(reshaped_dataset)
 
 def apply_num_generation(dataset, num_generation):
@@ -66,6 +70,67 @@ def post_process_output_based_on_num_generation(output, num_generation):
             new_output.append(temp)
             temp = []
     return new_output
+
+def main_process(dataset_orig, cache_dir, model_addr, tokenizer, num_contexts, temperature, top_p, max_tokens, max_retries, rag, public, cat_organized, output_addr):
+    ids, dataset = apply_num_generation(dataset_orig, 1) # num_generated out 1
+    llm, lora_req = load_llm(model_addr, cache_dir)
+    tokenizer = llm.get_tokenizer()
+    is_proprietary_llm = False
+
+    if rag and public and cat_organized:
+        formater = get_baseline_2_aug_categorized_formatter(tokenizer, num_contexts, proprietary_llm=is_proprietary_llm)
+    elif rag and public:
+        formater = get_baseline_public_formatter(tokenizer, num_contexts, proprietary_llm=is_proprietary_llm)
+    elif rag:
+        formater = get_baseline_rag_formatter(tokenizer, num_contexts, proprietary_llm=is_proprietary_llm)
+    else:
+        formater = get_baseline_no_rag_formatter(tokenizer, proprietary_llm=is_proprietary_llm)
+    prompts = prepare_prompts(dataset, formater)
+
+    outputs_dict = {}
+    retries = 0
+    while prompts:
+        retries += 1
+        wrongs = []
+        sampling_params = SamplingParams(temperature=temperature, top_p=top_p, max_tokens=max_tokens, logprobs=1)
+        print(lora_req)
+        outputs = llm.generate(prompts, sampling_params, lora_request=lora_req)
+        for id, prompt, output in zip(ids, prompts,  outputs):
+            if id not in outputs_dict:
+                outputs_dict[id] = []
+            try:
+                text_output = output.outputs[0].text
+                response_obj = str_to_json(text_output)
+                outputs_dict[id].append(
+                    {
+                        "prompt": prompt,
+                        "whole_output": response_obj,
+                        "output": response_obj['personalized_answer'],
+                        "log_prob": output.outputs[0].cumulative_logprob
+                    }
+                )
+            except Exception as e:
+                if retries > max_retries:
+                    outputs_dict[id].append(
+                        {
+                            "prompt": prompt,
+                            "whole_output": "",
+                            "output": "",
+                            "log_prob": 0
+                        }
+                    )
+                    continue
+                if temperature < 1:
+                    temperature += 0.1
+                print(e)
+                wrongs.append((id, prompt))
+        prompts = []
+        ids = []
+        for wrong in wrongs:
+            ids.append(wrong[0])
+            prompts.append(wrong[1])
+    with open(output_addr, "w") as file:
+        json.dump(outputs_dict, file, indent=4)
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--model_addr", type=str, required=True)

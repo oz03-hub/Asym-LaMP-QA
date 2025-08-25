@@ -20,6 +20,8 @@ python utils/download_datasets.py \
     --cache_dir /*address to the cache directory ([optional], default is ./cache)*/
 ```
 
+After download, please follow `wrangling.ipynb` to shape the data into expected formats.
+
 # Evaluating the generated responses
 
 To evaluate the generated responses to the questions in each dataset, use the following script:
@@ -119,7 +121,47 @@ python baselines.py \
     --num_contexts /*number of user personal contexts to be used for personalization, we use 10*/
 ```
 
+## RAG-Asymmetric
+OpenAI Models are not supported yet.
+
+```shell
+  python asymmetric_baselines.py \
+    --cache_dir "${CACHE_DIR}" \
+    --model_addr "${MODEL}" \
+    --inputs_addr "${INPUT_ADDR}" \
+    --output_addr "${OUTPUT_ADDR}" \
+    --num_contexts "${NUM_CONTEXTS}" --rag \
+    --limit_target 0
+```
+
+## 2-Aug-Asymmetric
+OpenAI Models are not supported yet.
+
+```shell
+  python asymmetric_baselines.py \
+    --cache_dir "${CACHE_DIR}" \
+    --model_addr "${MODEL}" \
+    --inputs_addr "${INPUT_ADDR}" \
+    --output_addr "${OUTPUT_ADDR}" \
+    --num_contexts "${NUM_CONTEXTS}" --rag --public \
+    --limit_target 0
+```
+
+## 2-Aug-Asymemtric-Categorized
+OpenAI Models are not supported yet.
+
+```shell
+  python asymmetric_baselines.py \
+    --cache_dir "${CACHE_DIR}" \
+    --model_addr "${MODEL}" \
+    --inputs_addr "${INPUT_ADDR}" \
+    --output_addr "${OUTPUT_ADDR}" \
+    --num_contexts "${NUM_CONTEXTS}" --rag --public --cat_organized \
+    --limit_target 0
+```
+
 ## PlanPers
+Not implemented yet for Asym-LaMP-QA
 
 To run this baseline, we first need to train the planner model using the labels provided in the dataset. To perform this training step, start by running the following script:
 

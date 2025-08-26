@@ -143,7 +143,7 @@ OpenAI Models are not supported yet.
     --model_addr "${MODEL}" \
     --inputs_addr "${INPUT_ADDR}" \
     --output_addr "${OUTPUT_ADDR}" \
-    --num_contexts "${NUM_CONTEXTS}" --rag --public \
+    --num_contexts "${NUM_CONTEXTS}" --rag --aug2 \
     --limit_target 0
 ```
 
@@ -156,7 +156,7 @@ OpenAI Models are not supported yet.
     --model_addr "${MODEL}" \
     --inputs_addr "${INPUT_ADDR}" \
     --output_addr "${OUTPUT_ADDR}" \
-    --num_contexts "${NUM_CONTEXTS}" --rag --public --cat_organized \
+    --num_contexts "${NUM_CONTEXTS}" --rag --aug2 --categorized \
     --limit_target 0
 ```
 

@@ -71,13 +71,13 @@ def post_process_output_based_on_num_generation(output, num_generation):
             temp = []
     return new_output
 
-def main_process(dataset_orig, cache_dir, model_addr, tokenizer, num_contexts, temperature, top_p, max_tokens, max_retries, rag, public, cat_organized, output_addr):
+def main_process(dataset_orig, cache_dir, model_addr, tokenizer, num_contexts, temperature, top_p, max_tokens, max_retries, rag, public, categorized, output_addr):
     ids, dataset = apply_num_generation(dataset_orig, 1) # num_generated out 1
     llm, lora_req = load_llm(model_addr, cache_dir)
     tokenizer = llm.get_tokenizer()
     is_proprietary_llm = False
 
-    if rag and public and cat_organized:
+    if rag and public and categorized:
         formater = get_baseline_2_aug_categorized_formatter(tokenizer, num_contexts, proprietary_llm=is_proprietary_llm)
     elif rag and public:
         formater = get_baseline_public_formatter(tokenizer, num_contexts, proprietary_llm=is_proprietary_llm)

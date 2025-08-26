@@ -70,27 +70,6 @@ sub_cats = {
     },
 }
 
-
-# # Helper Functions
-# def save_temp_dataset(dataset: list[dict], inputs_addr: str):
-#     """
-#     Saves same format json to the same directory as the input json. This temporary file gets deleted after the program executes.
-
-#     Arguments:
-#         - dataset: List of dictionaries, json.
-#         - inputs_addr: String path of the input json file
-#     """
-
-#     input_path = Path(inputs_addr)
-#     current_time = str(datetime.datetime.now())
-#     temp_path = input_path.parent / f"TEMP_{current_time}_{input_path.stem}.json"
-
-#     with open(temp_path, "w") as f:
-#         json.dump(dataset, f, indent=4) # same formatted
-
-#     return temp_path
-
-
 def filter_individual_profile(profile: list, kept_categories: set):
     """
     Applies category filtering on a single profile. Any entry in profile that is not in kept_categories will be filtered out.
@@ -164,8 +143,8 @@ parser.add_argument(
     "--entropy_minimum", type=float, default=0.0
 )  # Minimum required entropy of a user to be included
 parser.add_argument("--entropy_percentile", type=float, default=0) # Minimum percentile value to filter users
-parser.add_argument("--public", action="store_true") # enables 2-aug
-parser.add_argument("--cat_organized", action="store_true") # enables 2-aug-categorized
+parser.add_argument("--aug2", action="store_true") # enables 2-aug
+parser.add_argument("--categorized", action="store_true") # enables 2-aug-categorized
 
 # Retrieval parameters
 parser.add_argument(
@@ -217,7 +196,7 @@ if __name__ == "__main__":
     contriver = AutoModel.from_pretrained(args.retrieval_model_name).to("cuda:0")
     contriver.eval()
 
-    if args.public:
+    if args.aug2:
         public_r = 0.1 # percentage of public users
         dataset_new = []
         total_points = len(dataset)
@@ -253,4 +232,4 @@ if __name__ == "__main__":
             dataset_new.append(data)
         dataset = filter_target(dataset_new, sub_cats[target_cat], args.limit_target)
     
-    main_process(dataset_orig=dataset, cache_dir=args.cache_dir, model_addr=args.model_addr, tokenizer=tokenizer, num_contexts=args.num_contexts, temperature=args.temperature, top_p=args.top_p, max_tokens=args.max_tokens, max_retries=args.max_retries, rag=args.rag, public=args.public, cat_organized=args.cat_organized, output_addr=args.output_addr)
+    main_process(dataset_orig=dataset, cache_dir=args.cache_dir, model_addr=args.model_addr, tokenizer=tokenizer, num_contexts=args.num_contexts, temperature=args.temperature, top_p=args.top_p, max_tokens=args.max_tokens, max_retries=args.max_retries, rag=args.rag, public=args.aug2, categorized=args.categorized, output_addr=args.output_addr)
